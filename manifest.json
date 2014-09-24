@@ -1,0 +1,28 @@
+{
+  "name": "Octowhite",
+  "version": "1.0.0",
+  "description": "Adds a 'whitespace' toggle button in the GitHub diffs",
+  "manifest_version": 2,
+  "icons": {
+    "16": "img/icon16.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "content_scripts": [{
+    "matches": [
+      "https://github.com/*/pull/*",
+      "https://github.com/*/commit/*",
+      "https://github.com/*/compare/*"
+    ],
+    "run_at": "document_end",
+    "css": ["src/css/octowhite.css"],
+    "js": [
+      "src/js/vendor/jquery-1.9.1.min.js",
+      "src/js/vendor/query-parameters.js",
+      "src/js/octowhite.js"
+    ]
+  }],
+  "web_accessible_resources": [
+    "src/js/vendor/*"
+  ]
+}
