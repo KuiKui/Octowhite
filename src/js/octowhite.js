@@ -3,9 +3,9 @@ $(document).ready(function() {
   var whitespaceUrl   = getWhitespaceUrl(urlToReload);
   var noWhitespaceUrl = getNoWhitespaceUrl(urlToReload);
 
-  var buttons            = $('<div class="button-group right octowhite" data-ga-load="Diff, view, Viewed Unified Diff"></div>');
-  var whitespaceButton   = $('<a class="minibutton" href="' + whitespaceUrl + '">Whitespace</a>');
-  var noWhitespaceButton = $('<a class="minibutton" href="' + noWhitespaceUrl + '">No whitespace</a>');
+  var buttons            = $('<div class="btn-group right octowhite" data-ga-load="Diff, view, Viewed Unified Diff"></div>');
+  var whitespaceButton   = $('<a class="btn btn-sm" href="' + whitespaceUrl + '">Whitespace</a>');
+  var noWhitespaceButton = $('<a class="btn btn-sm" href="' + noWhitespaceUrl + '">No whitespace</a>');
 
   if (hasNoWhitespaceParam()) {
     noWhitespaceButton.addClass('selected');
