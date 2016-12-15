@@ -1,22 +1,21 @@
-$(document).ready(function() {
+$(function() {
   var urlToReload     = getUrlToReload();
   var whitespaceUrl   = getWhitespaceUrl(urlToReload);
   var noWhitespaceUrl = getNoWhitespaceUrl(urlToReload);
 
-  var buttons            = $('<div class="btn-group right octowhite" data-ga-load="Diff, view, Viewed Unified Diff"></div>');
-  var whitespaceButton   = $('<a class="btn btn-sm" href="' + whitespaceUrl + '">Whitespace</a>');
-  var noWhitespaceButton = $('<a class="btn btn-sm" href="' + noWhitespaceUrl + '">No whitespace</a>');
+  var buttonGroup = $('<div class="diffbar-item"><div class="BtnGroup"></div></div>');
 
   if (hasNoWhitespaceParam()) {
-    noWhitespaceButton.addClass('selected');
-    whitespaceButton.removeClass('selected');
+    var whitespace   = $('<a class="btn btn-sm btn-outline BtnGroup-item tooltipped tooltipped-s" href="' + whitespaceUrl + '" aria-label="View whitespace diff">Whitespace</a>');
+    var noWhitespace = $('<button type="button" class="btn btn-sm btn-outline BtnGroup-item tooltipped tooltipped-s bg-gray-light text-gray-light" href="' + noWhitespaceUrl + '" aria-label="Hide whitespace diff" disabled="">No whitespace</button>');
   } else {
-    whitespaceButton.addClass('selected');
-    noWhitespaceButton.removeClass('selected');
+    var whitespace   = $('<button type="button" class="btn btn-sm btn-outline BtnGroup-item tooltipped tooltipped-s bg-gray-light text-gray-light" href="' + whitespaceUrl + '" aria-label="View whitespace diff" disabled="">Whitespace</button>');
+    var noWhitespace = $('<a class="btn btn-sm btn-outline BtnGroup-item tooltipped tooltipped-s" href="' + noWhitespaceUrl + '" aria-label="Hide whitespace diff">No whitespace</a>');
   }
 
-  buttons.append(whitespaceButton).append(noWhitespaceButton);
-  buttons.insertBefore($('#toc>div').first().next());
+  buttonGroup.append(whitespace);
+  buttonGroup.append(noWhitespace)
+  buttonGroup.insertBefore($('.pr-review-tools > div.diffbar-item').first());
 });
 
 function hasNoWhitespaceParam() {
